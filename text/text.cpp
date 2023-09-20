@@ -9,4 +9,5 @@ int main(){
     cout<<MAX(n,m)<<endl;
     cout<<"一"<<endl;
     system("pause");
+    return 0;
 }
