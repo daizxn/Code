@@ -10,12 +10,12 @@
                 //"${file}",
                 "*.cpp",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "-L",
-				"${fileDirname}\\EasyX",
-				"-leasyx",
-                "-lstdc++",
-                "-fexec-charset=GBK"
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                // "-L",
+				// "${fileDirname}\\EasyX",
+				// "-leasyx",
+                // "-lstdc++",
+                // "-fexec-charset=GBK"
             ],
             "options": {
                 "cwd": "${fileDirname}"
