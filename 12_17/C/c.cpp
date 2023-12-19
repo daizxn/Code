@@ -6,14 +6,14 @@ using namespace std;
 
 int a[100005],b[100005];
 int suma[100005],sumb[100005];
-int k,m;
+int n,q;
 
-bool check(int x);
+bool check(int x,int k,int m);
 
 int main(){
     memset(suma,0,sizeof suma);
     memset(sumb,0,sizeof sumb);
-    int n,q;
+    
     cin>>n>>q;
     for(int i=1;i<=n;i++){
         cin>>a[i];
@@ -26,27 +26,29 @@ int main(){
         sumb[i]=sumb[i-1]+b[i];
     }
     for(int i=1;i<=q;i++){
+        int k,m;
         cin>>k>>m;
         int l=1,r=m,mid;
-        int ans;
+        int ans=0;
         while(l<=r){
             int mid=(l+r)>>1;
-            if(check(mid)){
+            if(check(mid,k,m)){
                 l=mid+1;
                 ans=mid;
             }
             else r=mid-1;
         }
-        int res1=suma[m-ans]+2*k*ans+sumb[ans];
-        int res2=sumb[m-ans+1]+2*k*(ans-1)+sumb[ans-1];
+        int res1=0x7fffffff,res2=0x7fffffff;
+        res1=suma[m-ans]+2*k*ans+sumb[ans];
+        if(ans>0)res2=suma[m-ans+1]+2*k*(ans-1)+sumb[ans-1];
         if(res1>res2)cout<<res2<<endl;
         else cout<<res1<<endl;
     }
 }
 
-bool check(int x){
-    if(k-a[m-x]>0)
-        if(a[m-x]>b[x]+2*k)
+bool check(int x,int k,int m){
+    if(a[n-x+1]-k>0)
+        if(a[n-x+1]>(b[x]+2*k))
             return 1;
     return 0;
 }
